@@ -21,7 +21,7 @@ printf "%s" "put -r $5 $6" > $TEMP_SFTP_FILE
 sftp -b $TEMP_SFTP_FILE -P $3 $7 -o StrictHostKeyChecking=no -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2
 
 echo 'docker-compose restart'
-ssh -o StrictHostKeyChecking=no -p $3 -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2 docker-compose restart -d
+ssh -o StrictHostKeyChecking=no -p $3 -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2 cd $6 && docker-compose restart
 
 echo 'deploy success'
 exit 0
